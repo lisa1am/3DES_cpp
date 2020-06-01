@@ -9,17 +9,19 @@
 #include"sequence.cpp"
 using namespace std;
 
-template<int size>
+template<int size=4>
 class SequenceD : private Sequence{
 
 private :
-	Sequence seqd;
+	Sequence R;
+	Sequence L;
 
 public:
 	SequenceD();
 
-}
+};
 
+template<int size>
 SequenceD::SequenceD(){
 	seq = Sequence(size);
 }

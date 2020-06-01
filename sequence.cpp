@@ -10,7 +10,7 @@ using namespace std;
 
 
 class Sequence{
-	protected :
+	private :
 		deque<int> seq;
 		int sz;
 
