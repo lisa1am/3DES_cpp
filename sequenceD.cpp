@@ -22,7 +22,7 @@ public:
 };
 
 template<int size>
-SequenceD::SequenceD(){
+SequenceD<size>::SequenceD(){
 	seq = Sequence(size);
 }
 

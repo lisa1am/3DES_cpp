@@ -146,14 +146,14 @@ Sequence Sequence::sous_sequence(int deb, int fin){
 
 
 
-int main(){
+/*int main(){
 	srand(time(0));
 	Sequence s1 = Sequence();
 
 	Sequence s2 = Sequence(6);
 	s1.afficher();
 	s2.afficher();
-	/*Sequence s3 = Sequence();
+	Sequence s3 = Sequence();
 	list<Sequence> lst;
 	lst.push_front(s1);
 	lst.push_front(s2);
@@ -175,9 +175,9 @@ int main(){
 	result.afficher();*
 	vector<int> vec ={2,0,0,3,0};
 	Sequence s = s1.permutation(vec);
-	s.afficher();*/
+	s.afficher();
 
 	Sequence s=s1.sous_sequence(1,2);
 	s.afficher();
 
-}
+}*/
