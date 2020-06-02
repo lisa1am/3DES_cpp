@@ -29,7 +29,7 @@ public:
 
 	void decalage(int d);
 
-	SequenceD& operator*(SequenceD seq);
+	SequenceD & operator*(SequenceD<size> seq);
 
 	Sequence& left();
 
@@ -91,9 +91,9 @@ void SequenceD<size>::decalage(int d){
 template<int size>
 SequenceD<size>& SequenceD<size>::operator*(SequenceD<size> seq){
 	if(seq.size()!=size){
-		return SequenceD<size> result(0);
+		return SequenceD<0>();
 	}else{
-		return SequenceD<size> result(seq.left()*L, seq.right()*R);
+		return SequenceD<seq.size>(seq.left()*L, seq.right()*R);
 	}
 }
 
