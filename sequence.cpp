@@ -22,11 +22,11 @@ class Sequence{
 
 		void afficher();
 
-		int &operator[](int i);
+		int& operator[](int i);
 
-		int operator()(int i);
+		const int operator()(const int i);
 
-		Sequence &operator=(int i);
+		Sequence& operator=(int i);
 
 		int size();
 
@@ -81,7 +81,7 @@ int & Sequence::operator[](int i){
 	}
 }
 
-int Sequence::operator()(int i){
+const int Sequence::operator()(const int i){
 	if((i>=0) && (i<size())){
 		return seq[i];
 	}else{
