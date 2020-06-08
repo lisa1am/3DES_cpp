@@ -41,6 +41,7 @@ class Sequence{
 
 
 Sequence::Sequence(int taille=4){
+	srand(time(0));
 	sz=taille;
 	for(int i=0; i<taille; i++){
 		seq.push_front(rand()%2);
@@ -65,7 +66,6 @@ void Sequence::afficher(){
 	for(deque<int>::iterator it=seq.begin(); it !=seq.end(); ++it){
 		cout << *it;
 	}
-	cout << "\n";
 }
 
 int Sequence::size(){
@@ -76,7 +76,7 @@ int & Sequence::operator[](int i){
 	if((i>=0) && (i<size())){
 		return seq[i];
 	}else{
-		cout << "Problème d'index !";
+		cout << "Problème d'index ! -- " << i;
 		exit(1);
 	}
 }
@@ -85,18 +85,17 @@ const int Sequence::operator()(const int i){
 	if((i>=0) && (i<size())){
 		return seq[i];
 	}else{
-		cout << "Problème d'index !";
+		cout << "Problème d'index ! -- " << i;
 		exit(1);
 	}
 }
 
 Sequence & Sequence::operator=(int s){
-	cout << "= " << "\n";
 	for(int i=size()-1; i>=0; i--){
-		cout << s%2 << "-";
 		seq[i]=s%2;
 		s=s/2;
 	}
+	return *this;
 }
 
 
@@ -153,6 +152,7 @@ Sequence Sequence::sous_sequence(int deb, int fin){
 	Sequence s2 = Sequence(6);
 	s1.afficher();
 	s2.afficher();
+
 	Sequence s3 = Sequence();
 	list<Sequence> lst;
 	lst.push_front(s1);
@@ -167,17 +167,18 @@ Sequence Sequence::sous_sequence(int deb, int fin){
 	s4[2]=0;
 	s4.afficher();
 	cout << "Taille = " << s4.size() << "\n";
-	s1=100;
-	cout << "after\n";*
+	s1=10;
+	s1.afficher();
+	cout << "after\n";
 	
 
 	Sequence result = s1*s2;
-	result.afficher();*
+	result.afficher();
 	vector<int> vec ={2,0,0,3,0};
 	Sequence s = s1.permutation(vec);
 	s.afficher();
 
-	Sequence s=s1.sous_sequence(1,2);
+	s=s1.sous_sequence(1,2);
 	s.afficher();
 
 }*/
