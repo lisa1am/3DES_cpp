@@ -41,7 +41,7 @@ class Sequence{
 
 
 Sequence::Sequence(int taille=4){
-	srand(time(0));
+	srand(time(NULL) * clock());
 	sz=taille;
 	for(int i=0; i<taille; i++){
 		seq.push_front(rand()%2);
@@ -63,8 +63,13 @@ Sequence::Sequence(list<Sequence> lst){
 }
 
 void Sequence::afficher(){
+	int i=0;
 	for(deque<int>::iterator it=seq.begin(); it !=seq.end(); ++it){
 		cout << *it;
+		i++;
+		if(i%8==0){
+			cout << "-";
+		}
 	}
 }
 

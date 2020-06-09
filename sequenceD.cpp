@@ -136,23 +136,27 @@ ostream& operator<<(ostream& os, SequenceD<S> seqd){
 	return os;
 }
 
+
+
+// TODO : tout est good mais l'affectation ne marche pas correctement 
 template<int S>
-istream& operator>>(istream& is, SequenceD<S> seqd){
+istream& operator>>(istream& is, SequenceD<S>& seqd){
 	if(S!=64){
 		return is;
 	}else{
 
-		for(int i=0; i<4; i++){
+		for(int i=0; i<8; i++){
 			char read;
 			is >> read;
 
 			bitset<8> binary = bitset<8>(read);
-			string str = binary.to_string();
-			char char_array[str.length()];
-			//strcpy(char_array, str.c_str());
-
-			for(int j=0; j< str.length(); j++){
-				seqd[(i*8)+j]=0;
+			cout <<  binary << endl;
+			string str = binary.to_string().c_str();
+			int j=0;
+			for(char element : str){
+				//affectation
+				seqd[i+j]=element-'0';
+				j++;
 			}
 		}
 	}
@@ -168,16 +172,48 @@ void SequenceD<S>::afficher(){
 }
 
 
+template<int S>
+ostream& write(ostream& os, SequenceD<S> seqd){
+	if(S!=64){
+		return os;
+	}else{
+		for(int i=0; i<64; i++){
+			os << seqd(i);
+			if((i+1)%8==0){
+				os << "-";
+			}
+		}
+	}
+	os << endl;
+	return os;
+}
+
+template<int S>
+istream& read(istream& is, SequenceD<S>& seqd){
+	char bit;
+	if(S!=64){
+		return is;
+	}else{
+		for(int i=0; i<64; i++){
+			is >> bit;
+			seqd[i]=bit-'0';
+		}
+	}
+	return is;
+}
+
+
 int main(){
-	SequenceD<64> seqd = SequenceD<64>();
+	/*SequenceD<64> seqd = SequenceD<64>();
 	seqd.afficher();
 	cout << seqd;
-	/*bitset<8> b(203);
+	bitset<8> b(203);
 	cout << b.to_ulong();
 	cout << (char)b.to_ulong();
 	cout << "éèï";*/
 
 	SequenceD<64> seq = SequenceD<64>();
+	seq.afficher();
 	cin >> seq;
 	seq.afficher();
 
