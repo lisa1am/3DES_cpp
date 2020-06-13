@@ -1,46 +1,6 @@
-#include<iostream>
-#include<deque>
-#include<stdlib.h>
-#include<stdio.h>
-#include<time.h>
-#include<list>
-#include<algorithm>
-#include<vector>
-using namespace std;
+#include"sequence.h"
 
-
-class Sequence{
-	private :
-		deque<int> seq;
-		int sz;
-
-	public :
-
-		Sequence(int);
-
-		Sequence(list<Sequence>);
-
-		void afficher();
-
-		int& operator[](int i);
-
-		const int operator()(const int i);
-
-		Sequence& operator=(int i);
-
-		int size();
-
-		void decalage(int i);
-
-		Sequence operator*(Sequence s);
-
-		Sequence permutation(vector<int> vec);
-
-		Sequence sous_sequence(int deb, int fin);
-};
-
-
-Sequence::Sequence(int taille=4){
+Sequence::Sequence(int taille){
 	srand(time(NULL) * clock());
 	sz=taille;
 	for(int i=0; i<taille; i++){
