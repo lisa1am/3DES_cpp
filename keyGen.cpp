@@ -18,10 +18,5 @@ SequenceD<48> KeyGen::next(){
 }
 
 
-int main(){
-	SequenceD<64> seqd = SequenceD<64>();
-	seqd.afficher();
-	//KeyGen keygen(seqd);
 
-}
 

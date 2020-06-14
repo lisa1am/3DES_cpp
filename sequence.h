@@ -42,7 +42,7 @@ class Sequence{
 		Sequence sous_sequence(int deb, int fin);
 };
 
-#endif 
+#endif
 
 //g++ -c sequence.cpp
 //g++ sequence.o sequenceD.cpp -o test
