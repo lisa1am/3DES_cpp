@@ -9,8 +9,12 @@
 #include <cstring>
 using namespace std;
 
+
+
+// tout définir dans le header car c'est une classe avec template
 template<int S=4>
 class SequenceD : private Sequence{
+	// héritage privé
 
 private :
 	Sequence R;
@@ -99,7 +103,7 @@ SequenceD<S>& SequenceD<S>::operator*(SequenceD<S> seq){
 }
 
 
-//revoir s'il faut vraiment renvoyer la ref ou non
+
 template<int S>
 Sequence& SequenceD<S>::left(){
 	return L;
@@ -117,15 +121,20 @@ ostream& operator<<(ostream& os, SequenceD<S> seqd){
 		return os;
 	}else{
 		bitset<8> byte;
+		//left sequence
 		for(int i=0; i<4; i++){
+			//parcourir des sous-sequences de 8 bits
 			Sequence seq8 = seqd.left().sous_sequence(i*8, i*8+7);
+			//reconstruire le sequences de 8 bits dans un binary 
 			for (int j = 7; j > -1; j--){
 				byte[j] = seq8(7-j);
 			}
+			//convertir le binaty en charactère 
 			char c = (char)byte.to_ulong();
 			result+= c;
 			
 		}
+		//même process pour la sequence droite
 		for(int i=0; i<4; i++){
 			Sequence seq8 = seqd.right().sous_sequence(i*8, i*8+7);
 			for (int j = 7; j > -1; j--){
@@ -148,15 +157,14 @@ istream& operator>>(istream& is, SequenceD<S>& seqd){
 	if(S!=64){
 		return is;
 	}else{
-
 		for(int i=0; i<8; i++){
 			char read;
 			is >> read;
-
+			//convertir le caractère lu en binaire
 			bitset<8> binary = bitset<8>(read);
-			cout <<  binary << endl;
 			string str = binary.to_string().c_str();
 			int j=0;
+			//parcourir la chaine de bits binaires et affecter chaque bit a la sequence
 			for(char element : str){
 				//affectation
 				seqd[i+j]=element-'0';
@@ -181,6 +189,7 @@ ostream& write(ostream& os, SequenceD<S> seqd){
 	if(S!=64){
 		return os;
 	}else{
+		//même raisonnement que oerator <<
 		for(int i=0; i<64; i++){
 			os << seqd(i);
 			if((i+1)%8==0){
@@ -198,6 +207,7 @@ istream& read(istream& is, SequenceD<S>& seqd){
 	if(S!=64){
 		return is;
 	}else{
+		//même raisonnement que operator >>
 		for(int i=0; i<64; i++){
 			is >> bit;
 			seqd[i]=bit-'0';

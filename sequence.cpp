@@ -37,6 +37,8 @@ int Sequence::size(){
 	return sz;
 }
 
+
+//on retourne une références pour nous permettre de modifier la valeur
 int & Sequence::operator[](int i){
 	if((i>=0) && (i<size())){
 		return seq[i];
@@ -46,6 +48,7 @@ int & Sequence::operator[](int i){
 	}
 }
 
+// on retourne une copie du int pour ne pas modifier la valeur
 const int Sequence::operator()(const int i){
 	if((i>=0) && (i<size())){
 		return seq[i];
@@ -73,10 +76,12 @@ void Sequence::decalage(int d){
 	}
 }
 
-
+// appliquer la regle simple du XOR 
+// si pareil = 0
+// si différent = 1
 Sequence Sequence::operator*(Sequence s){
-	
-	if(seq.size()!=s.size()){
+
+	if(sz!=s.sz){
 		return Sequence(0);
 	}else{
 		Sequence result(s.size());
@@ -91,13 +96,16 @@ Sequence Sequence::operator*(Sequence s){
 	}
 }
 
+
+//replacer les valeur de la sequence selon l'odre donné dans le veteur
 Sequence Sequence::permutation(vector<int> vec){
 	Sequence s(vec.size());
-	for(int i=0; i<vec.size(); i++){
+	for(int i=0; i<(int)vec.size(); i++){
 		s[i]=seq[vec[i]];
 	}
 	return s;
 }
+
 
 Sequence Sequence::sous_sequence(int deb, int fin){
 	Sequence s(fin-deb+1);
@@ -110,40 +118,3 @@ Sequence Sequence::sous_sequence(int deb, int fin){
 
 
 
-/*int main(){
-	srand(time(0));
-	Sequence s1 = Sequence();
-
-	Sequence s2 = Sequence(6);
-	s1.afficher();
-	s2.afficher();
-
-	Sequence s3 = Sequence();
-	list<Sequence> lst;
-	lst.push_front(s1);
-	lst.push_front(s2);
-	lst.push_front(s3);
-	Sequence s4 = Sequence(lst);
-	s1.afficher();
-	s2.afficher();
-	s3.afficher();
-	s4.afficher();
-	cout << s4[2] << "\n";
-	s4[2]=0;
-	s4.afficher();
-	cout << "Taille = " << s4.size() << "\n";
-	s1=10;
-	s1.afficher();
-	cout << "after\n";
-	
-
-	Sequence result = s1*s2;
-	result.afficher();
-	vector<int> vec ={2,0,0,3,0};
-	Sequence s = s1.permutation(vec);
-	s.afficher();
-
-	s=s1.sous_sequence(1,2);
-	s.afficher();
-
-}*/
