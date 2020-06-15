@@ -20,14 +20,10 @@ Sequence f::operator()(Sequence& seq){
 	list<Sequence> xor_list({xor_seqd_48.left(), xor_seqd_48.right()});
 
 	Sequence xor_seq = Sequence(xor_list);
-	cout << "xor " << endl;
-	xor_seq.afficher();
 
 	//s_fonction
 	list<Sequence> liste;
-	cout << endl<< "final 1" << endl;
 	liste.push_back(s_fonc(xor_seq));
-	cout << endl<< "final 2" << endl;
 	Sequence substitution = Sequence(liste);
 
    
