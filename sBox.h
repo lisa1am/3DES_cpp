@@ -6,14 +6,14 @@
 
 class sBox {
 
-private:
-	int** matrice_;
-public:
-	sBox(int matrice[][]);
-	~sBox();
-	sBox(const sBox& sbox);
-	sBox& operator=(sBox& sbox);
-	Sequence operator()(Sequence seq);
+	private:
+		int** matrice_;
+	public:
+		sBox(int** matrice);
+		~sBox();
+		sBox(const sBox& sbox);
+		sBox& operator=(sBox& sbox);
+		Sequence operator()(Sequence seq);
 };
 
 #endif

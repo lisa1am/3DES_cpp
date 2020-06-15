@@ -1,6 +1,7 @@
 #include "sBox.h"
+#include "math.h"
 
-sBox::sBox(int matrice[][]) {
+sBox::sBox(int** matrice) {
 	this->matrice_ = new int* [4];
 
 	// Genère un tableau d'int pour chaque pointeur de tableau de pointeur
@@ -27,10 +28,10 @@ sBox::sBox(const sBox& sbox) {
 
 sBox& sBox::operator=(sBox& sbox) = default;
 
-sequence sBox::operator()(Sequence seq)
+Sequence sBox::operator()(Sequence seq)
 {
 	//verifier que la taille de la seq en entrée est bien de 6bits
-	Sequence row_sequence = sequence(2);
+	Sequence row_sequence = Sequence(2);
 	// attribution à la sequence intermédiaire du premier et du dernier bit
 	row_sequence[0] = seq(0);
 	row_sequence[1] = seq(5);
@@ -43,7 +44,7 @@ sequence sBox::operator()(Sequence seq)
 	}
 
 	//attribution de la sequence intermédiaire avec les 4 bits du milieu
-	Sequence col_sequence = sequence(seq.sous_sequence(1, 4));
+	Sequence col_sequence = Sequence(seq.sous_sequence(1, 4));
 	int col_size = col_sequence.size();
 	int col = 0;
 	for (int i = 0; i < col_size; i++) {
@@ -58,7 +59,7 @@ sequence sBox::operator()(Sequence seq)
 		temp_res /= 2;
 		cpt++;
 	} while (temp_res != 0);
-	Sequence return_seq = sequence();
+	Sequence return_seq = Sequence();
 	return_seq = res;
 	return return_seq;
 }
