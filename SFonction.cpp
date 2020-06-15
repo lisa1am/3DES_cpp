@@ -31,7 +31,6 @@ SFonction& SFonction::operator=(const SFonction& s_fonc)= default;
 
 
 Sequence SFonction::operator()(Sequence seq){
-	cout << "test";
 	list<Sequence> liste;
 	for(int i=0; i<8; ++i){
 		sBox sbox = sBox(s_boxes[i]);
