@@ -15,9 +15,10 @@ SequenceD<64> des::operator()(SequenceD<64> sequenceD) const
 	Permutation<64, 64> permutation;
 	auto round_sequenceD = permutation(std::move(sequenceD), initial_permutation);
 
-	// F fonction
+	// f
 	auto f_ = f(key_);
 
+    // les 16 étapes
 	for (auto i = 0; i < 16; i++)
 	{
 		auto sequence_right = f_(round_sequenceD.right());

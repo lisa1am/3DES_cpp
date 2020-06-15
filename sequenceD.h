@@ -154,25 +154,29 @@ ostream& operator<<(ostream& os, SequenceD<S> seqd){
 // TODO : tout est good mais l'affectation ne marche pas correctement 
 template<int S>
 istream& operator>>(istream& is, SequenceD<S>& seqd){
-	if(S!=64){
-		return is;
-	}else{
-		for(int i=0; i<8; i++){
-			char read;
-			is >> read;
-			//convertir le caractère lu en binaire
-			bitset<8> binary = bitset<8>(read);
-			string str = binary.to_string().c_str();
-			int j=0;
-			//parcourir la chaine de bits binaires et affecter chaque bit a la sequence
-			for(char element : str){
-				//affectation
-				seqd[i+j]=element-'0';
-				j++;
-			}
-		}
-	}
-	return is;
+	if (S != 64)
+    		return is;
+    	for (auto i = 0; i < 64; i += 8)
+    	{
+    		char c;
+    		if(is.eof())
+    		{
+    			c = ' ';
+    		} else
+    		{
+    			is >> c;
+    		}
+
+    		auto set = bitset<8>(c);
+    		string array = set.to_string().c_str();
+    		auto j = 0;
+    		for (auto element : array)
+    		{
+    			seqd[i + j] = element - '0';
+    			j++;
+    		}
+    	}
+    	return is;
 }
 
 
@@ -215,6 +219,5 @@ istream& read(istream& is, SequenceD<S>& seqd){
 	}
 	return is;
 }
-
 
 #endif

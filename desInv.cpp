@@ -15,7 +15,7 @@ SequenceD<64> desInv::operator()(SequenceD<64> sequenceD) const
 	Permutation<64, 64> permutation;
 	auto round_sequenceD = permutation(std::move(sequenceD), initial_permutation);
 
-	// F fonction
+	// fInv
 	auto fInv = finv(key_);
 
 	for (auto i = 0; i < 16; i++)
