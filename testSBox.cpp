@@ -71,24 +71,20 @@ static void test_sBox()
 		}
 	};
 
-    int** matrice_test;
-    matrice_test = new int* [4];
+   auto mat_test = new int* [4];
+    for(int i=0; i<4; i++){
+		mat_test[i]= new int [16];
+		for(int j=0; j<16; j++){
+				mat_test[i][j] = matrice_test[i][j];
+			}
+	} 
 
-    for (int i = 0; i < 4; i++)
-    	{
-    		matrice_test[i] = new int[16];
-
-    		// Copie de la valeur de la matrice en param
-    		for (int j = 0; j < 16; j++)
-    		{
-    			matrice_test[i][j] = sboxes[0][i][j];
-    		}
-    	}
-
-    sBox sbox = sBox(matrice_test);
+    sBox sbox = sBox(mat_test);
     Sequence seq_entree = Sequence(6);
     seq_entree.afficher();
-
+    cout << endl;
     Sequence seq_sortie = sbox(seq_entree);
     seq_sortie.afficher();
+    cout << endl;
+    
 }
