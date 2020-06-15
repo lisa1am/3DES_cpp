@@ -4,7 +4,7 @@
 f::f(const SequenceD<64>& seqd){
 
 	keygen = KeyGen(seqd);
-	s_fonc = SFonction(construct_sboxes());
+	
 }
 
 Sequence f::operator()(Sequence& seq){
