@@ -17,7 +17,7 @@ int main(){
 	//cout << endl << "SequenceD right side 32 bits : " << endl;
 	//seqd_input.right().afficher();
 	Sequence seq = Sequence(32);
-  	cout << endl << "sequence input 48 : ";
+  	cout << endl << "sequence input 32 : ";
 	seq.afficher();
 	cout << endl;
 	Sequence seq_out = f_(seq);
